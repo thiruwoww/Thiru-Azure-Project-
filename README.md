@@ -26,52 +26,54 @@ Load balancing ensures that the application will be highly available, in additio
 - Load balancers protect the Availability, Web traffic, Web security.Load balancers mainly protect from denial-of-service attacks. It will be rerouting the live traffic from one server to another. If a server falls into a DDoS attack server becomes unavailable. In this way, the load balancer helps to eliminate the single-point failure.
   A jump box is a secure computer. sysadmins first connect to before launching any administrative task on other servers. Jump boxes provide controlled access to the servers or VMs holding the applications and help with the management of these hosts.
 
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the _____ and system _____.
+Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the files and system metrics.
 - Filebeat used for forward and centralizing log data. It will be installed as agent on the servers. It will monitor the log files in specified location and collect the log files and the events, forward those data to the Elastic search or logstash 
 - Metricbeat will monitor the servers by collecting metrics from the system and services running on the server .Basically Metricbeat collect the statistics and metrics it will send to the specified output.
 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     	| Function 	| IP Address 	| Operating System 		|
-|----------	|----------	|------------	|------------------		|
-| Jump Box 	| Gateway  	| 10.0.0.7   	| Linux            		|
-| TODO     	|         	|            	|                  		|
-| TODO     	|          	|            	|                  		|
-| TODO     	|          	|            	|                  		|
+| Name     	| Function 			 | IP Address 	  					| Operating System 	|
+|--------------	|------------------------------- |------------------------------------------------------|-----------------------|
+| Jump Box 	| Gateway With Ansible Container | Public:-52.149.134.141 Private:- 10.0.0.7   	  	|Ubuntu 18.04 Server LTS|
+| ELK VMM       | ELK Container & Data Collection| Public:-20.103.251.242 Private:- 10.1.0.6		|Ubuntu 18.04 Server LTS|
+| Web1   	| DVWA Container ,Web Server     | Private:- 10.0.0.11           	  		|Ubuntu 18.04 Server LTS|
+| web2     	| DVWA Container ,Web Server     | Private:- 10.0.0.12           	  		|Ubuntu 18.04 Server LTS|
+| web-3     	| DVWA Container ,Web Server     | Private:- 10.0.0.13            	  		|Ubuntu 18.04 Server LTS|
 
 ### Access Policies
 
 The machines on the internal network are not exposed to the public Internet. 
 
 Only the Jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- _TODO: Add whitelisted IP addresses_
+- Its personal machine 216.209.173.22. But in the rule mention the whole network 216.209.0.0/16. 
 
-Machines within the network can only be accessed by _____.
-- _TODO: Which machine did you allow to access your ELK VM? What was its IP address?_
+Machines within the network can only be accessed by Jumpbox.
+- Jumpbox with the IP address 52.149.134.141 with the ansible container can access the Elk server
 
 A summary of the access policies in place can be found in the table below.
 
 | Name     | Publicly Accessible | Allowed IP Addresses |
 |----------|---------------------|----------------------|
-| Jump Box | Yes/No              | 10.0.0.1 10.0.0.2    |
-|          |                     |                      |
-|          |                     |                      |
+| Jump Box | Yes                 | 216.209.173.22       |
+| ELK VMM  | Yes                 | 216.209.173.22       |
+| Web1     | No                  | 52.149.134.141       |
+| Web2     | No                  | 52.149.134.141       |
+| Web-3    | No                  | 52.149.134.141       |
 
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- We can  deploy in multiple servers in short time. Just run the ansible playbook instead of going to every machine and configure individually  
-
+- We can  deploy in multiple servers in short time.Main advantage is same configuration can be automated and deployed to multiple machines .Just run the ansible playbook instead of going to every machine and configure individually.It is time consuming and cost effective.
 
 The playbook implements the following tasks:
-- Install docker.io
-- Install PIP
-- Install docker python module
+- Installed the Docker and Ansible on the jumpbox machine.
+- Enabling playbook automation to push software services to other machines
 - Download and install a Docker elk container
 - run command to increase the memory
 - List the ports that ELK runs
 - Enable service docker on boot
+- Run playbook file via ansible-playbook command, therefore pushing task to all machine assigned/configured to receive
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
@@ -79,7 +81,7 @@ The following screenshot displays the result of running `docker ps` after succes
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
-- _TODO: List the IP addresses of the machines you are monitoring_
+- All the three Web_VMs 10.0.0.11 , 10.0.0.12 , 10.0.0.13
 
 We have installed the following Beats on these machines:
 - Filebeat and Metricbeat
@@ -94,7 +96,7 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the _____ file to _____.
 - Update the /etc/ansible/hosts file to include...
-- Run the playbook, and navigate to ____ to check that the installation worked as expected.
+- Run the playbook, and navigate to http://20.104.251.242:5601 to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 - _Which file is the playbook? Where do you copy it?_
@@ -104,4 +106,6 @@ _TODO: Answer the following questions to fill in the blanks:_
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
 - This command us used to increase the memory "sysctl -w vm.max_map_count=262144" . This improves the performance of Elk server.
+- 
+- 
 - 
