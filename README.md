@@ -33,13 +33,13 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 The configuration details of each machine may be found below.
 _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
 
-| Name     	| Function 			   | IP Address 	  			| Operating System       |
-|---------------|----------------------------------|--------------------------------------------|------------------------|
-| JumpT-Box 	| Gateway With Ansible Container   | Public:-52.149.134.141,Private:- 10.0.0.7  |Ubuntu 18.04 Server LTS |						 
-| ELK VMM       | ELK Container & Data Collection  | Public:-20.103.251.242,Private:- 10.1.0.6  |Ubuntu 18.04 Server LTS |
-| Web1   	| DVWA Container ,Web Server       | Private:- 10.0.0.11          	        |Ubuntu 18.04 Server LTS |
-| web2     	| DVWA Container ,Web Server       | Private:- 10.0.0.12          	        |Ubuntu 18.04 Server LTS |
-| web-3     	| DVWA Container ,Web Server       | Private:- 10.0.0.13          	        |Ubuntu 18.04 Server LTS |
+| Name     	| Function 			                   | IP Address 	  			                      | Operating System       |
+|---------- |----------------------------------|--------------------------------------------|------------------------|
+| JumpT-Box | Gateway With Ansible Container   | Public:-52.149.134.141,Private:- 10.0.0.7  |Ubuntu 18.04 Server LTS |						 
+| ELK VMM   | ELK Container & Data Collection  | Public:-20.103.251.242,Private:- 10.1.0.6  |Ubuntu 18.04 Server LTS |
+| Web1   	  | DVWA Container ,Web Server       | Private:- 10.0.0.11          	            |Ubuntu 18.04 Server LTS |
+| web2     	| DVWA Container ,Web Server       | Private:- 10.0.0.12          	            |Ubuntu 18.04 Server LTS |
+| web-3     | DVWA Container ,Web Server       | Private:- 10.0.0.13          	            |Ubuntu 18.04 Server LTS |
 
 ### Access Policies
 
