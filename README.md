@@ -98,14 +98,14 @@ SSH into the control node and follow the steps below:
 - Update the /etc/ansible/hosts file to include...
    
 #192.168.1.110
-10.0.0.12 ansible_python_interpreter=/usr/bin/python3
+-10.0.0.12 ansible_python_interpreter=/usr/bin/python3
 
-10.0.0.11 ansible_python_interpreter=/usr/bin/python3
+-10.0.0.11 ansible_python_interpreter=/usr/bin/python3
 
-10.0.0.13 ansible_python_interpreter=/usr/bin/python3
+-10.0.0.13 ansible_python_interpreter=/usr/bin/python3
 
 [elk]
-10.1.0.6 ansible_python_interpreter=/usr/bin/python3
+-10.1.0.6 ansible_python_interpreter=/usr/bin/python3
 
 - Run the playbook, and navigate to VM or http://20.104.251.242:5601 to check that the installation worked as expected.
 
