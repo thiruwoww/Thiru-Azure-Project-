@@ -64,7 +64,7 @@ A summary of the access policies in place can be found in the table below.
 ### Elk Configuration
 
 Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- We can  deploy in multiple servers in short time.Main advantage is same configuration can be automated and deployed to multiple machines .Just run the ansible playbook instead of going to every machine and configure individually.It is time consuming and cost effective.
+- We can  deploy in multiple servers in short time.Main advantage is same configuration can be automated and deployed to multiple machines .Just run the ansible playbook instead of going to every machine and configure individually.This is time consuming and cost effective through Ansible it is not. 
 
 The playbook implements the following tasks:
 - Installed the Docker and Ansible on the jumpbox machine.
@@ -96,12 +96,12 @@ In order to use the playbook, you will need to have an Ansible control node alre
 SSH into the control node and follow the steps below:
 - Copy the _____ file to _____.
 - Update the /etc/ansible/hosts file to include...
-- Run the playbook, and navigate to http://20.104.251.242:5601 to check that the installation worked as expected.
+- Run the playbook, and navigate to VM or http://20.104.251.242:5601 to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_
-- _Which URL do you navigate to in order to check that the ELK server is running?
+- _Which file is the playbook? Where do you copy it?_.yml files are playbook files that can be run with Ansible. Typically, it's copied into a container where ansible is installed to be deployed
+- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_The Hosts file allows for grouping of machines so you can dictate where you want resources to be deployed
+- _Which URL do you navigate to in order to check that the ELK server is running? http://20.104.251.242:5601
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
