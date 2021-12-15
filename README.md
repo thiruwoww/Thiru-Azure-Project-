@@ -78,7 +78,6 @@ The playbook implements the following tasks:
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
 
-"C:\Git\Thiru-Azure-Project-\Diagrams\Docker PS PNG.png"
 
 ### Target Machines & Beats
 This ELK server is configured to monitor the following machines:
@@ -100,7 +99,9 @@ SSH into the control node and follow the steps below:
    
 #192.168.1.110
 10.0.0.12 ansible_python_interpreter=/usr/bin/python3
+
 10.0.0.11 ansible_python_interpreter=/usr/bin/python3
+
 10.0.0.13 ansible_python_interpreter=/usr/bin/python3
 
 [elk]
