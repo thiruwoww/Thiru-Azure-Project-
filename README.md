@@ -99,9 +99,15 @@ SSH into the control node and follow the steps below:
 - Run the playbook, and navigate to VM or http://20.104.251.242:5601 to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
-- _Which file is the playbook? Where do you copy it?_.yml files are playbook files that can be run with Ansible. Typically, it's copied into a container where ansible is installed to be deployed
-- _Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?_The Hosts file allows for grouping of machines so you can dictate where you want resources to be deployed
-- _Which URL do you navigate to in order to check that the ELK server is running? http://20.104.251.242:5601
+
+- Which file is the playbook? Where do you copy it?
+  .yml files are playbook files that can be run with Ansible. Typically, it's copied into a container where ansible is installed to be deployed
+
+- Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
+  The Hosts file allows for grouping of machines so can edit where the resources want  to be deployed
+
+- Which URL do you navigate to in order to check that the ELK server is running? 
+   http://20.104.251.242:5601
 
 _As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
 
