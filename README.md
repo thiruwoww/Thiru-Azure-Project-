@@ -37,8 +37,10 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 |--------------	|------------------------------- |----------------------------- |------------------------|
 | Jump Box 	| Gateway With Ansible Container | Public:-52.149.134.141 	|Ubuntu 18.04 Server LTS |
 | 		| 				 | Private:- 10.0.0.7   	|			 |
+
 | ELK VMM       | ELK Container & Data Collection| Public:-20.103.251.242 	|Ubuntu 18.04 Server LTS |
 | 	 	| 				 | Private:- 10.1.0.6   	|			 |
+
 | Web1   	| DVWA Container ,Web Server     | Private:- 10.0.0.11          |Ubuntu 18.04 Server LTS |
 | web2     	| DVWA Container ,Web Server     | Private:- 10.0.0.12          |Ubuntu 18.04 Server LTS |
 | web-3     	| DVWA Container ,Web Server     | Private:- 10.0.0.13          |Ubuntu 18.04 Server LTS |
