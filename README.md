@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![TODO: Update the path with the name of your diagram](Images/diagram_filename.png)
+![TODO: Update the path with the name of your diagram](Images/Red Team Diagram.drawio.png)
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the  filebeat-playbook file may be used to install only certain pieces of it, such as Filebeat.
 
@@ -35,8 +35,8 @@ _Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdow
 
 | Name     	| Function 			   | IP Address 	  			| Operating System       |
 |---------------|----------------------------------|--------------------------------------------|------------------------|
-| JumpT-Box 	| Gateway With Ansible Container   | Public:-52.149.134.141,			Private:- 10.0.0.7  |Ubuntu 18.04 Server LTS |						 
-| ELK VMM       | ELK Container & Data Collection  | Public:-20.103.251.242,			Private:- 10.1.0.6  |Ubuntu 18.04 Server LTS |
+| JumpT-Box 	| Gateway With Ansible Container   | Public:-52.149.134.141,Private:- 10.0.0.7  |Ubuntu 18.04 Server LTS |						 
+| ELK VMM       | ELK Container & Data Collection  | Public:-20.103.251.242,Private:- 10.1.0.6  |Ubuntu 18.04 Server LTS |
 | Web1   	| DVWA Container ,Web Server       | Private:- 10.0.0.11          	        |Ubuntu 18.04 Server LTS |
 | web2     	| DVWA Container ,Web Server       | Private:- 10.0.0.12          	        |Ubuntu 18.04 Server LTS |
 | web-3     	| DVWA Container ,Web Server       | Private:- 10.0.0.13          	        |Ubuntu 18.04 Server LTS |
