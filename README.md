@@ -32,7 +32,7 @@ Integrating an ELK server allows users to easily monitor the vulnerable VMs for 
 - Metricbeat will monitor the servers by collecting metrics from the system and services running on the server .Basically Metricbeat collect the statistics and metrics it will send to the specified output.
 
 The configuration details of each machine may be found below.
-_Note: Use the [Markdown Table Generator](http://www.tablesgenerator.com/markdown_tables) to add/remove values from the table_.
+
 
 | Name     	| Function 			                   | IP Address 	  			                      | Operating System       |
 |---------- |----------------------------------|--------------------------------------------|------------------------|
@@ -120,7 +120,7 @@ _TODO: Answer the following questions to fill in the blanks:_
 - Which URL do you navigate to in order to check that the ELK server is running? 
    http://20.104.251.242:5601
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
+As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
 
 -
 -
