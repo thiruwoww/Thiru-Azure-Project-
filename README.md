@@ -97,7 +97,7 @@ SSH into the control node and follow the steps below:
 - Copy the filebeat-playbook.yml and metricbeat-playbook.yml file to /etc/ansible/files.
 - Update the /etc/ansible/hosts file to include...
    
-#192.168.1.110
+[webservers]
 - 10.0.0.12 ansible_python_interpreter=/usr/bin/python3
 
 - 10.0.0.11 ansible_python_interpreter=/usr/bin/python3
