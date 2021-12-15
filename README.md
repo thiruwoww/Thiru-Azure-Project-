@@ -49,7 +49,7 @@ Only the Jumpbox machine can accept connections from the Internet. Access to thi
 - Its personal machine 216.209.173.22. But in the rule mention the whole network 216.209.0.0/16. 
 
 Machines within the network can only be accessed by Jumpbox.
-- Jumpbox with the IP address 52.149.134.141 with the ansible container can access the Elk server
+- Jumpbox with the IP address 52.149.134.141 with the ansible container can access the Elk server. Private ip 10.0.0.7
 
 A summary of the access policies in place can be found in the table below.
 
@@ -94,23 +94,38 @@ These Beats allow us to collect the following information from each machine:
 In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
 
 SSH into the control node and follow the steps below:
-- Copy the _____ file to _____.
+- Copy the filebeat-playbook.yml and metricbeat-playbook.yml file to /etc/ansible/files.
 - Update the /etc/ansible/hosts file to include...
+   
+#192.168.1.110
+10.0.0.12 ansible_python_interpreter=/usr/bin/python3
+10.0.0.11 ansible_python_interpreter=/usr/bin/python3
+10.0.0.13 ansible_python_interpreter=/usr/bin/python3
+
+[elk]
+10.1.0.6 ansible_python_interpreter=/usr/bin/python3
+
 - Run the playbook, and navigate to VM or http://20.104.251.242:5601 to check that the installation worked as expected.
 
 _TODO: Answer the following questions to fill in the blanks:_
 
 - Which file is the playbook? Where do you copy it?
-  .yml files are playbook files that can be run with Ansible. Typically, it's copied into a container where ansible is installed to be deployed
+  .yml files are playbook files it will run with Ansible. So we need to copy into a container where ansible is installed to be deployed
 
 - Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
-  The Hosts file allows for grouping of machines so can edit where the resources want  to be deployed
+  The Hosts file allows for grouping of machines so can edit where the resources want  to be deployed. When we group the VM as webservers , ELK stack (filebeat) as elk group through that playbook will install the software’s and the packages 
 
 - Which URL do you navigate to in order to check that the ELK server is running? 
    http://20.104.251.242:5601
 
-_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc._
+_As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
 
+-
+-
+-
+-
+-
+-
 - This command us used to increase the memory "sysctl -w vm.max_map_count=262144" . This improves the performance of Elk server.
 - 
 - 
