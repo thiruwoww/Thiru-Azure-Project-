@@ -120,7 +120,7 @@ _TODO: Answer the following questions to fill in the blanks:_
 
 - Which file is the playbook? Where do you copy it?
  
- .yml files are playbook files it will run with Ansible. So we need to copy into a container where ansible is installed to be deployed
+ playbook files .yml files are it will run with Ansible. So we need to copy into a container where ansible is installed to deploy.
 
 - Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
  
