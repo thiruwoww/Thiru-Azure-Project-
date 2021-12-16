@@ -133,13 +133,11 @@ Answer the following questions to fill in the blanks:
 
 As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
 
--
--
--
--
--
--
+- sudo docker start [container name]
+- sudo docker ps
+- sudo docker exec -ti [container name] bash
+- sudo ansible-playbook [.yml file to run]
 - This command us used to increase the memory "sysctl -w vm.max_map_count=262144" . This improves the performance of Elk server.
-- 
-- 
-- 
+
+
+
