@@ -126,8 +126,8 @@ Answer the following questions to fill in the blanks:
  
 - The Hosts file allows for grouping of machines so can edit where the resources want  to be deployed. When we group the VM as webservers , ELK stack (filebeat) as elk group through that playbook will install the software’s and the packages 
 
-- Which URL do you navigate to in order to check that the ELK server is running? 
-   http://20.104.251.242:5601
+ Which URL do you navigate to in order to check that the ELK server is running? 
+  -http://20.104.251.242:5601
 
 As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
 
