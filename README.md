@@ -2,7 +2,7 @@
 
 The files in this repository were used to configure the network depicted below.
 
-![Red Team Diagram drawio](https://user-images.githubusercontent.com/87206984/146279118-11544fbb-a200-48db-ba94-98da77c39781.png)
+![image](https://user-images.githubusercontent.com/87206984/146311159-374bd646-98c7-4b8c-a262-dfbf0b3597ac.png)
 
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the  filebeat-playbook file may be used to install only certain pieces of it, such as Filebeat.
