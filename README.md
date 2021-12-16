@@ -7,7 +7,9 @@ The files in this repository were used to configure the network depicted below.
 
 These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the  filebeat-playbook file may be used to install only certain pieces of it, such as Filebeat.
 
-  - filebeat-playbook.yml,install-elk-playbook,metricbeat-playbook
+  - filebeat-playbook.yml https://github.com/thiruwoww/Thiru-Azure-Project-/blob/main/Ansible/filebeat-playbook.yml
+  - install-elk-playbook.yml https://github.com/thiruwoww/Thiru-Azure-Project-/blob/main/Ansible/install-elk-playbook.yml
+  - metricbeat-playbook.yml https://github.com/thiruwoww/Thiru-Azure-Project-/blob/main/Ansible/metricbeat-playbook.yml
 
 
 This document contains the following details:
@@ -85,6 +87,11 @@ This ELK server is configured to monitor the following machines:
 
 We have installed the following Beats on these machines:
 - Filebeat and Metricbeat
+- Filebeat
+![image](https://user-images.githubusercontent.com/87206984/146284911-7c93f336-a48d-4840-959b-8157f7e61ad3.png)
+
+- Metricbeat
+![image](https://user-images.githubusercontent.com/87206984/146284943-4d83c361-7563-4036-8a0b-65005a888aa7.png)
 
 These Beats allow us to collect the following information from each machine:
 - Filebeats watches for the change in the files in the specified locations. When the modifications happen in a file it will collect all those data and sends it to Logstash or Elasticsearch. Logs like audit log, deprecation logs, server logs etc.
