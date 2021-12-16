@@ -88,10 +88,10 @@ This ELK server is configured to monitor the following machines:
 We have installed the following Beats on these machines:
 - Filebeat and Metricbeat
 - Filebeat
-![image](https://user-images.githubusercontent.com/87206984/146305922-8ac68f8f-39c2-4cc2-a1b7-a5da5b9ea4cb.png)
+![image](https://user-images.githubusercontent.com/87206984/146306505-2ec1e9c4-9586-4192-8498-e298c7a5eca1.png)
 
 - Metricbeat
-![image](https://user-images.githubusercontent.com/87206984/146305943-a9080832-0d63-4c70-8801-a7531cf33c19.png)
+![image](https://user-images.githubusercontent.com/87206984/146306485-1714840d-6821-4a6d-a4a9-117a3083ba35.png)
 
 These Beats allow us to collect the following information from each machine:
 - Filebeats watches for the change in the files in the specified locations. When the modifications happen in a file it will collect all those data and sends it to Logstash or Elasticsearch. Logs like audit log, deprecation logs, server logs etc.
