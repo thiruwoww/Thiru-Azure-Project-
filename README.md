@@ -135,9 +135,9 @@ As a **Bonus**, provide the specific commands the user will need to run to downl
 
 - sudo docker start [container name] >> To start the container 
 - sudo docker attach [container name] >> Prompt to the container
-- sudo docker ps >> list t
+- sudo docker ps 
 - sudo docker exec -ti [container name] bash
-- sudo ansible-playbook [.yml file to run]
+- sudo ansible-playbook [.yml file to run] Once edit the .yml file re run the file through this command . It will do the update.
 - This command us used to increase the memory "sysctl -w vm.max_map_count=262144" . This improves the performance of Elk server.
 
 
