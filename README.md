@@ -76,6 +76,7 @@ The playbook implements the following tasks:
 - run command to increase the memory
 - List the ports that ELK runs
 - Enable service docker on boot
+- Download and launch the elk:761 docker web container and allowed the following published ports to be permitted access: 5601:5601 9200:9200 5044:5044
 - Run playbook file via ansible-playbook command, therefore pushing task to all machine assigned/configured to receive
 
 The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
