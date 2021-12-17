@@ -1,144 +1,152 @@
-## Automated ELK Stack Deployment
-
-The files in this repository were used to configure the network depicted below.
-
-![image](https://user-images.githubusercontent.com/87206984/146311159-374bd646-98c7-4b8c-a262-dfbf0b3597ac.png)
-
-
-These files have been tested and used to generate a live ELK deployment on Azure. They can be used to either recreate the entire deployment pictured above. Alternatively, select portions of the  filebeat-playbook file may be used to install only certain pieces of it, such as Filebeat.
-
-  - filebeat-playbook.yml https://github.com/thiruwoww/Thiru-Azure-Project-/blob/main/Ansible/filebeat-playbook.yml
-  - install-elk-playbook.yml https://github.com/thiruwoww/Thiru-Azure-Project-/blob/main/Ansible/install-elk-playbook.yml
-  - metricbeat-playbook.yml https://github.com/thiruwoww/Thiru-Azure-Project-/blob/main/Ansible/metricbeat-playbook.yml
-
-
-This document contains the following details:
-- Description of the Topologu
-- Access Policies
-- ELK Configuration
-  - Beats in Use
-  - Machines Being Monitored
-- How to Use the Ansible Build
-
-
-### Description of the Topology
-
-The main purpose of this network is to expose a load-balanced and monitored instance of DVWA, the D*mn Vulnerable Web Application.
-
-Load balancing ensures that the application will be highly available, in addition to restricting access to the network.
-- Load balancers protect the Availability, Web traffic, Web security.Load balancers mainly protect from denial-of-service attacks. It will be rerouting the live traffic from one server to another. If a server falls into a DDoS attack server becomes unavailable. In this way, the load balancer helps to eliminate the single-point failure.
-  A jump box is a secure computer. sysadmins first connect to before launching any administrative task on other servers. Jump boxes provide controlled access to the servers or VMs holding the applications and help with the management of these hosts.
-
-Integrating an ELK server allows users to easily monitor the vulnerable VMs for changes to the files and system metrics.
-- Filebeat used for forward and centralizing log data. It will be installed as agent on the servers. It will monitor the log files in specified location and collect the log files and the events, forward those data to the Elastic search or logstash 
-- Metricbeat will monitor the servers by collecting metrics from the system and services running on the server .Basically Metricbeat collect the statistics and metrics it will send to the specified output.
-
-The configuration details of each machine may be found below.
-
-
-| Name     	| Function 			                   | IP Address 	  			                      | Operating System       |
-|---------- |----------------------------------|--------------------------------------------|------------------------|
-| JumpT-Box | Gateway With Ansible Container   | Public:-52.149.134.141,Private:- 10.0.0.7  |Ubuntu 18.04 Server LTS |						 
-| ELK VMM   | ELK Container & Data Collection  | Public:-20.103.251.242,Private:- 10.1.0.6  |Ubuntu 18.04 Server LTS |
-| Web1   	  | DVWA Container ,Web Server       | Private:- 10.0.0.11          	            |Ubuntu 18.04 Server LTS |
-| web2     	| DVWA Container ,Web Server       | Private:- 10.0.0.12          	            |Ubuntu 18.04 Server LTS |
-| web-3     | DVWA Container ,Web Server       | Private:- 10.0.0.13          	            |Ubuntu 18.04 Server LTS |
-
-### Access Policies
-
-The machines on the internal network are not exposed to the public Internet. 
-
-Only the Jumpbox machine can accept connections from the Internet. Access to this machine is only allowed from the following IP addresses:
-- Its personal machine 216.209.173.22. But in the rule mention the whole network 216.209.0.0/16. 
-
-Machines within the network can only be accessed by Jumpbox.
-- Jumpbox with the IP address 52.149.134.141 with the ansible container can access the Elk server. Private ip 10.0.0.7
-
-A summary of the access policies in place can be found in the table below.
-
-| Name      | Publicly Accessible | Allowed IP Addresses |
-|-----------|---------------------|----------------------|
-| JumpT-Box | Yes                 | 216.209.173.22       |
-| ELK VMM   | Yes                 | 216.209.173.22       |
-| Web1      | No                  | 52.149.134.141       |
-| Web2      | No                  | 52.149.134.141       |
-| Web-3     | No                  | 52.149.134.141       |
-
-### Elk Configuration
-
-Ansible was used to automate configuration of the ELK machine. No configuration was performed manually, which is advantageous because...
-- We can  deploy in multiple servers in short time.Main advantage is same configuration can be automated and deployed to multiple machines .Just run the ansible playbook instead of going to every machine and configure individually.This is time consuming and cost effective through Ansible it is not. 
-
-The playbook implements the following tasks:
-- Installed the Docker and Ansible on the jumpbox machine.
-- Enabling playbook automation to push software services to other machines
-- Download and install a Docker elk container
-- run command to increase the memory
-- List the ports that ELK runs
-- Enable service docker on boot
-- Download and launch the elk:761 docker web container and allowed the following published ports to be permitted access: 5601:5601 9200:9200 5044:5044
-- Run playbook file via ansible-playbook command, therefore pushing task to all machine assigned/configured to receive
-
-The following screenshot displays the result of running `docker ps` after successfully configuring the ELK instance.
-
-
-### Target Machines & Beats
-This ELK server is configured to monitor the following machines:
-- All the three Web_VMs 10.0.0.11 , 10.0.0.12 , 10.0.0.13
-
-We have installed the following Beats on these machines:
-- Filebeat and Metricbeat
-- Filebeat
-![image](https://user-images.githubusercontent.com/87206984/146306505-2ec1e9c4-9586-4192-8498-e298c7a5eca1.png)
-
-- Metricbeat
-![image](https://user-images.githubusercontent.com/87206984/146306485-1714840d-6821-4a6d-a4a9-117a3083ba35.png)
-
-These Beats allow us to collect the following information from each machine:
-- Filebeats watches for the change in the files in the specified locations. When the modifications happen in a file it will collect all those data and sends it to Logstash or Elasticsearch. Logs like audit log, deprecation logs, server logs etc.
-- Metricbeat collect the metric data from the services and the operating system and send it to the specified output .services like  My SQL ,HA proxy etc. 
-
-### Using the Playbook
-In order to use the playbook, you will need to have an Ansible control node already configured. Assuming you have such a control node provisioned: 
-
-SSH into the control node and follow the steps below:
-- Copy the filebeat-playbook.yml and metricbeat-playbook.yml file to /etc/ansible/files.
-- Update the /etc/ansible/hosts file to include...
-   
-[webservers]
-- 10.0.0.12 ansible_python_interpreter=/usr/bin/python3
-
-- 10.0.0.11 ansible_python_interpreter=/usr/bin/python3
-
-- 10.0.0.13 ansible_python_interpreter=/usr/bin/python3
-
-[elk]
-- 10.1.0.6 ansible_python_interpreter=/usr/bin/python3
-
-- Run the playbook, and navigate to VM or http://20.104.251.242:5601 to check that the installation worked as expected.
-
-Answer the following questions to fill in the blanks:
-
- Which file is the playbook? Where do you copy it?
- 
-- playbook files .yml files are it will run with Ansible. So we need to copy into a container where ansible is installed to deploy.
-
- Which file do you update to make Ansible run the playbook on a specific machine? How do I specify which machine to install the ELK server on versus which to install Filebeat on?
- 
-- The Hosts file allows for grouping of machines so can edit where the resources want  to be deployed. When we group the VM as webservers , ELK stack (filebeat) as elk group through that playbook will install the software’s and the packages 
-
- Which URL do you navigate to in order to check that the ELK server is running? 
-  
-  - http://20.104.251.242:5601
-
-As a **Bonus**, provide the specific commands the user will need to run to download the playbook, update the files, etc.
-
-- sudo docker start [container name] >> To start the container 
-- sudo docker attach [container name] >> Prompt to the container
-- sudo docker ps 
-- sudo docker exec -ti [container name] bash
-- sudo ansible-playbook [.yml file to run] Once edit the .yml file re run the file through this command . It will do the update.
-- This command us used to increase the memory "sysctl -w vm.max_map_count=262144" . This improves the performance of Elk server.
-
-
-
+A description of deployment
+1) Setting up the Cloud Environment
+Create Resource Group
+● Create a resource group and a region, I chose US East region:
+○ Named as Resource Group RedTeam.
+Create Vnet (Virtual Network)
+● Create a new Virtual Network.
+● Make sure to select the resource group we created previously as well as the
+same region:
+○ Also, use the default IP and subnet settings.
+Create a Network Security Group (NSG)
+● Create a Network Security Group that is part of the Resource Group RedTeam.
+● Named my NSG "Firewall".
+● Make sure the NSG is in the same region as everything else we've created thus
+far.
+2) Create the Virtual Machines
+Create Jump Box VM
+● Log in to Azure account.
+● Click on the virtual machines box and then click new.
+● Under the resource group, select the group RedTeam.
+● Named the VM JumpT-Box.
+● Use a Ubuntu server with at least 1GB of memory.
+● Use a public SSH key from from local computer and give it a username
+● Use "ssh-keygen" to create a public key that doesn't have one.
+○ My username is sysadmin.
+Network Security Group Rules
+● This is an overview of all of the inbound and outbound rules for the Firewall NSG:
+Set up Docker.io on the Jump Box VM
+● SSH into your Jump-Box VM, turn on your machine on Azure before that:
+ssh sysadmin@[public IP]
+● Once logged in, implement the following:
+○ sudo apt install docker.io
+○ sudo docker pull cyberxsecurity/ansible
+○ Launch the ansible container: docker run -ti
+cyberxsecurity/ansible:latest bash to make sure it works
+○ type exit
+Config and Hosts File
+● cd into the /etc/ansible/ directory and nano ansible.cfg file
+○ scroll to the remote_user section and update to include sysadmin instead
+of root. Save and exit.
+● nano /etc/ansible/hosts file
+○ Uncomment the [webservers] header
+○ Under the header, add the internal IP address of the 3 VMs:
+■ 10.0.0.11 ansible_python_interpreter=/usr/bin/python3
+■ 10.0.0.12 ansible_python_interpreter=/usr/bin/python3
+■ 10.0.0.13 ansible_python_interpreter=/usr/bin/python3
+Create 3 Virtual Machines
+● We will create 3 additional virtual machines that will be web servers.
+● We will name them Web-1, Web-2, and Web-3.
+● Follow this criteria:
+○ Allow no public IP address.
+○ Create a new availability set, I called mine webset, set the 3 VMs to this.
+○ Connect your VMs to the RedNet VNet and to the Firewall NSG.
+● Use a public SSH key from the JumpT-Box VM docker container and give it a
+username .
+○ Use "ssh-keygen" to create a public key if you don't have one.
+○ username is sysadmin.
+● To make sure it works:
+○ SSH into the Jump Box VM
+○ Start and attach your docker container: sudo docker start “name of the
+container” && sudo docker attack “name of the container”
+○ Once in the container, SSH into each VM to make sure they work:
+■ ssh sysadmin@10.0.0.12
+■ ssh sysadmin@10.0.0.13
+■ ssh sysadmin@10.0.0.14
+3) Load Balancer
+● Create a new Load Balancer in Azure.
+● Select static IP address and select the same Resource Group and region.
+● Select create new public IP address.
+● I named my Load Balancer: Red-Team-LB
+● Create a new Backend Pool and add the 3 VMs to it.
+4) Logging into Jump Box Provisioner
+● Log in to Azure and turn on your Jump Box Provisioner virtual machine.
+● Open your personal computer terminal
+5) Starting Docker
+● Check to see which containers you have:
+● my container is: festive_hofstadter
+● To start your container, use the following commands:
+6) Install ELK Stack
+Create a new VNet (Virtual Network)
+● Create a new VNet that is in the same resource group (RedTeam) but in a
+different region.
+● I created one and named it Canadacentral:
+● Create a peer connection between the two VNets (RedNet and Elk-red-net)
+● In my Elk-red-vnet page, I clicked on Peerings and added a new Peering with
+the following settings:
+○ I created a new connection from EastNet to RedNet and called it:
+Elk-to-Red, connecting to my RedNet VNet.
+○ I created another connection from RedNet to EastNet and called it:
+Red-to-Elk.
+Create a new Virtual Machine
+● Create a new Ubuntu VM with a 8GB minimum RAM size.
+● The IP address will be public.
+● The VNet will be Elk-red-vnet, and the resource group will be the one we have for
+the other VMs, which is RedTeam.
+● I used the public key from the ansible container and my username as sysadmin.
+● I named my VM: ELK.
+● Once the VM is created, I ssh'd into the VM to make sure it works:
+Download and Configure the Container
+● We will add the new VM IP address to the hosts file in the ansible container
+● Edited the hosts file and added the elk IP address under the [elk] group:
+● Created a playbook that will configure the ELK server, named it "install-elk.yml":
+Launched and Exposed the Container
+● Ran the yaml playbook, made sure it worked:
+● As we can see from above, the container was successfully created, with the
+image "sebp/elk:761".
+Identity and Access Management
+● We are going to restrict access to the ELK-VMM through the ELK Network
+Security Group:
+● Once in the NSG for ELK, we are going to add an inbound rule that will allow
+access from our computer to the ELK server on port 5601:
+● Finally, we will verify that we can log into the server by accessing on our browser,
+[ELK-public-IP]:5601/app/kibana:
+○ Note: the public IP will always change every time we restart it.
+7) Install Filebeat
+● We can use Filebeat to collect, parse, and visualize ELK logs in a single
+command. This will help us better track our organizational goals.
+Install Filebeat on the container
+● First, we will start the virtual machines (including the ELK server) on Azure.
+● Then, we will access the kibana page and make sure it works.
+● We will start the container within the jump box vm:
+● I jumped back to the kibana page and found the DEB page for creating a system
+log and will use this guide to create our filebeat playbook.
+Create Filebeat configuration file
+● Once the folder is created, I will download the filebeat-config.yml:
+● I opened the filebeat-confi.yml file and added the ELK server private IP address
+in two areas:
+output.elasticsearch:
+hosts: ["10.1.0.6:9200"]
+username: "elastic"
+password: "changeme"
+setup.kibana:
+host: "10.1.0.6:5601"
+Create Filebeat Installation Playbook
+● I created the filebeat-playbook.yml under /etc/ansible/files.
+● Once created, using the DEB page, I added the needed commands:
+Verify Installation and Playbook
+● Back on the kibana page, I will check the data on the instruction page:
+● Finally, I checked the dashboard to make sure things are running:
+Create a play to install Metricbeat
+● Using the same steps for Filebeat, I created a config file for Metricbeat and
+added ELK's private IP in two areas:
+output.elasticsearch:
+hosts: ["10.1.0.6:9200"]
+username: "elastic"
+password: "changeme"
+setup.kibana:
+host: "10.1.0.6:5601"
+● Under the files folder, I will create the metricbeat-playbook.yml:
+● Once both playbooks were created, I ran the metribeat-playbook.yml:
+● Now that the playbook ran successfully, I will check the data on the kibana page:
+● Finally, we will check the dashboard, to make sure it works:
